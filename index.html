@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SikaDaily — Save Daily. Earn Interest. Build Your Future.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<!-- Standard favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+
+<!-- Apple devices -->
+<link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+
+<!-- Android / Chrome -->
+<link rel="icon" type="image/png" sizes="192x192" href="./images/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="./images/android-chrome-512x512.png">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1A6B3C;
+    --green-dark: #0F4A28;
+    --green-deep: #0A3019;
+    --gold: #D4A017;
+    --gold-light: #F0C040;
+    --offwhite: #F9F6F0;
+    --charcoal: #1C1C1E;
+    --charcoal-soft: #2C2C2A;
+    --muted: #5F5E5A;
+    --border: rgba(28,28,30,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--offwhite);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff;
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 40px;
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    width: 40px; height: 40px;
+   
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-logo-mark span {
+    color: var(--gold);
+    font-family: 'Fraunces', serif;
+    font-size: 16px; font-weight: 700;
+  }
+  .nav-logo-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 600;
+    color: var(--charcoal);
+  }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--charcoal);
+    font-size: 14px; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--charcoal);
+    cursor: pointer;
+  }
+
+  .nav-toggle svg { width: 20px; height: 20px; }
+
+  .nav-cta {
+    background: var(--green);
+    color: #fff !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    padding: 10px 20px;
+    border: none; border-radius: 4px;
+    cursor: pointer !important;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green); }
+
+  /* ── HERO ── */
+  img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── HERO ── */
+
+/* Prevent hero from being too cramped on small screens */
+.hero {
+  min-height: 100svh; /* safer on mobile browsers */
+  padding: 80px 0 64px;
+}
+
+.hero-content {
+  padding: 0 20px;
+}
+
+/* On mobile/tablet: stack and center hero content */
+@media (max-width: 1023px) {
+  .hero {
+    padding: 72px 0 56px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    justify-items: center;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-left {
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-headline {
+    font-size: clamp(30px, 7vw, 46px);
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    max-width: 480px;
+    text-align: center;
+  }
+
+  .hero-btns {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 64px 0 48px;
+  }
+
+  .hero-content {
+    padding: 0 16px;
+  }
+
+  .hero-headline {
+    font-size: clamp(26px, 8.5vw, 36px);
+  }
+
+  .hero-sub {
+    font-size: 14px;
+  }
+
+  .btn-store {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  .btn-store-text strong {
+    font-size: 12px;
+  }
+
+  .hero-btns {
+    gap: 10px;
+  }
+}
+
+
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    padding: 40px 40px 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(10,48,25,0.66) 0%, rgba(15,74,40,0.68) 50%, rgba(26,107,60,0.60) 100%),
+      url('./images/hero.jpg') center/cover no-repeat;
+    z-index: 0;
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.06;
+    background-image: radial-gradient(circle, var(--gold) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center;
+  }
+
+  @media (max-width: 1023px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .hero-left {
+      max-width: 420px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .hero-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(212,160,23,0.15);
+    border: 0.5px solid rgba(212,160,23,0.4);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+  }
+  .hero-pill-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+  .hero-pill span { color: var(--gold); font-size: 12px; letter-spacing: 0.8px; font-weight: 500; }
+
+  .hero-headline {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .hero-headline .gold { color: var(--gold); font-style: italic; }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px; line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 36px;
+  }
+
+  .hero-btns {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+
+  .btn-store {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--charcoal);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 11px 20px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-store:hover { background: #333; transform: translateY(-1px); }
+  .btn-store-icon { width: 20px; height: 20px; opacity: 0.9; }
+  .btn-store-text small { display: block; color: rgba(255,255,255,0.5); font-size: 9px; letter-spacing: 0.5px; }
+  .btn-store-text strong { display: block; color: #fff; font-size: 13px; font-weight: 500; }
+
+  /* ── APP CARD ── */
+  .app-card-wrap {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: cardRise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  }
+
+  @keyframes cardRise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .app-card {
+    background: var(--charcoal);
+    border-radius: 24px;
+    border: 1px solid rgba(212,160,23,0.25);
+    overflow: hidden;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.4);
+  }
+
+  .card-header {
+    background: var(--green);
+    padding: 24px 22px 20px;
+    position: relative;
+  }
+  .card-header-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 4px;
+  }
+  .card-label { color: rgba(255,255,255,0.6); font-size: 11px; }
+  .card-badge {
+    background: rgba(212,160,23,0.2);
+    border: 0.5px solid rgba(212,160,23,0.4);
+    border-radius: 100px;
+    padding: 3px 10px;
+    color: var(--gold);
+    font-size: 10px; font-weight: 500;
+  }
+  .card-balance-currency { color: var(--gold); font-size: 13px; font-weight: 500; }
+  .card-balance-amount {
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-size: 34px; font-weight: 700;
+    line-height: 1.1;
+  }
+  .card-change { color: #6ee7b7; font-size: 11px; margin-top: 4px; }
+
+  .card-vault {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 100px;
+    padding: 5px 12px;
+    margin-top: 12px;
+  }
+  .card-vault svg { width: 10px; height: 10px; opacity: 0.7; }
+  .card-vault span { color: rgba(255,255,255,0.7); font-size: 10px; }
+
+  .card-chart {
+    background: var(--charcoal-soft);
+    padding: 16px 22px 0;
+  }
+  .card-chart-label {
+    display: flex; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .card-chart-label span { color: rgba(255,255,255,0.5); font-size: 10px; }
+
+  .chart-area {
+    width: 100%; height: 70px;
+  }
+
+  .card-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--charcoal-soft);
+    padding: 16px 22px;
+    gap: 1px;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .card-stat { padding: 0 8px 0 0; }
+  .card-stat:last-child { padding: 0 0 0 16px; border-left: 0.5px solid rgba(255,255,255,0.08); }
+  .card-stat-label { color: rgba(255,255,255,0.45); font-size: 10px; margin-bottom: 4px; }
+  .card-stat-value { color: #fff; font-size: 18px; font-weight: 500; }
+  .card-stat-sub { color: #6ee7b7; font-size: 10px; }
+
+  .card-action {
+    background: var(--charcoal);
+    padding: 16px 22px;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .card-action-btn {
+    width: 100%;
+    background: #fff;
+    color: var(--charcoal);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 500;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.2s;
+    text-decoration: none;
+  }
+
+  .card-action-btn:hover { background: var(--charcoal-soft); color: var(--offwhite); }
+
+  .card-nav {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    background: var(--charcoal);
+    padding: 12px 10px 16px;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .card-nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    cursor: pointer;
+  }
+  .card-nav-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .card-nav-icon.active { background: rgba(212,160,23,0.2); border: 0.5px solid rgba(212,160,23,0.4); }
+  .card-nav-item:hover .card-nav-icon { background: rgba(255,255,255,0.1); }
+  .card-nav-label { color: rgba(255,255,255,0.45); font-size: 9px; }
+  .card-nav-label.active { color: var(--gold); }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 40px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    color: var(--green);
+    font-size: 11px; font-weight: 500; letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-heading {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--charcoal);
+  }
+  .section-sub {
+    color: var(--muted);
+    font-size: 16px; line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── FEATURES ── */
+  .features { background: #fff; }
+  .features-header { text-align: center; margin-bottom: 60px; }
+  .features-header .section-sub { margin: 0 auto; }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+
+  .feature-card {
+    background: var(--offwhite);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s;
+  }
+  .feature-card.visible { opacity: 1; transform: translateY(0); }
+  .feature-card:nth-child(1) { transition-delay: 0s; }
+  .feature-card:nth-child(2) { transition-delay: 0.1s; }
+  .feature-card:nth-child(3) { transition-delay: 0.2s; }
+  .feature-card:nth-child(4) { transition-delay: 0.3s; }
+  .feature-card:hover {
+    box-shadow: 0 12px 40px rgba(26,107,60,0.1);
+    transform: translateY(-4px);
+  }
+
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .feature-icon svg { width: 22px; height: 22px; }
+
+  .feature-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--charcoal);
+  }
+  .feature-desc { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+  /* ── HOW IT WORKS ── */
+  .how {
+  background: var(--green);
+}
+
+  .how-header { text-align: center; margin-bottom: 64px; }
+  .how-header .hero-pill { margin: 0 auto 16px; }
+  .how-header .section-sub { margin: 0 auto; }
+  .how .section-heading.toop { color: var(--gold-light); }
+  .how .section-sub.toop { color: rgba(240,192,64,0.75); }
+
+  .how-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .how-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 40px 24px 30px;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .how-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  .how-badge {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-light);
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  /* Icon */
+  .how-icon {
+    font-size: 32px;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+  }
+
+  .how-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  /* Text */
+  .how-card p {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .how-buttons {
+    display: flex;
+    margin-top: 35px;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .store-btn {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 13px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    text-decoration: none;
+    color: var(--charcoal);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  } 
+
+  .store-btn:hover{
+    background: var(--charcoal);
+    color: var(--offwhite);
+  }
+
+  .store-btn.dark {
+    background: #000;
+    color: #fff;
+  }
+.store-btn.dark:hover{
+  background: var(--offwhite);
+  color: var(--charcoal);
+}
+  .how-action {
+    background: var(--offwhite);
+    border: none;
+    padding: 13px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--charcoal);
+    margin-top: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  .how-action:hover {
+    background: var(--charcoal);
+    color: var(--offwhite);
+  }
+
+  /* Note */
+  .how-note {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .yellow{
+    color: var(--offwhite);
+  }
+
+  /* ── SECURITY ── */
+  .security { background: #fff; }
+  .security-header { text-align: center; margin-bottom: 60px; }
+  .security-header .section-sub { margin: 0 auto; }
+
+ 
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+ 
+  .security-card {
+    background: var(--offwhite);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s;
+  }
+  .security-card.visible { opacity: 1; transform: translateY(0); }
+  .security-card:nth-child(1) { transition-delay: 0s; }
+  .security-card:nth-child(2) { transition-delay: 0.1s; }
+  .security-card:nth-child(3) { transition-delay: 0.2s; }
+  .security-card.visible:hover {
+    box-shadow: 0 12px 40px rgba(26,107,60,0.1);
+    transform: translateY(-4px);
+  }
+ 
+  .security-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .security-icon svg { width: 22px; height: 22px; }
+ 
+  .security-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--charcoal);
+  }
+  .security-card-desc { color: var(--muted); font-size: 14px; line-height: 1.6; }
+ 
+
+  /* ── CTA ── */
+  /* ── CTA (UPDATED CHECKERED GRID BACKGROUND) ── */
+.cta-section {
+  position: relative;
+  background: var(--green);
+  padding: 100px 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Grid overlay */
+.cta-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(212,160,23,0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,160,23,0.28) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  /* ✨ subtle motion */
+  animation: gridDrift 40s linear infinite;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gridDrift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 60px 60px, 60px 60px;
+  }
+}
+
+/* Optional soft glow layer for depth */
+.cta-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glowShift 60s ease-in-out infinite alternate;
+}
+
+@keyframes glowShift {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-20px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-section::before,
+  .cta-section::after {
+    animation: none;
+  }
+}
+
+/* Ensure content stays above grid */
+.cta-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+  .cta-pill {
+    display: inline-block;
+    background: rgba(212,160,23,0.15);
+    border: 0.5px solid rgba(212,160,23,0.3);
+    border-radius: 100px;
+    padding: 6px 18px;
+    color: var(--gold);
+    font-size: 11px; letter-spacing: 1px;
+    margin-bottom: 24px;
+  }
+  .cta-heading {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 640px;
+    margin: 0 auto 16px;
+  }
+  .cta-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 16px; line-height: 1.6;
+    max-width: 480px; margin: 0 auto 40px;
+  }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal-soft);
+    padding: 64px 40px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 40px; margin-bottom: 48px;
+  }
+  .footer-brand-name {
+    font-family: 'Fraunces', serif;
+    font-size: 18px; font-weight: 600; color: #fff;
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .footer-brand-dot {
+    width: 8px; height: 8px; background: var(--gold); border-radius: 50%;
+  }
+  .footer-brand-desc { color: rgba(255,255,255,0.4); font-size: 13px; line-height: 1.65; max-width: 240px; }
+  .footer-col-title { color: rgba(255,255,255,0.6); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.4); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: rgba(255,255,255,0.8); }
+  .footer-divider { border: none; border-top: 0.5px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { color: rgba(255,255,255,0.25); font-size: 12px; }
+  .footer-reg {
+    display: flex; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.25); font-size: 12px;
+  }
+  .footer-reg-dot { width: 5px; height: 5px; background: var(--green); border-radius: 50%; }
+
+  img { max-width: 100%; height: auto; display: block; }
+
+  .container {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  section { padding: 100px 0; }
+
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+    height: 64px;
+  }
+
+  .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .hero {
+    padding: 56px 0 56px;
+  }
+
+  .app-card-wrap {
+    max-width: 420px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .features-grid { grid-template-columns: repeat(4, 1fr); }
+  .how-cards { grid-template-columns: repeat(3, 1fr); }
+  .security-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .cta-btns { flex-wrap: wrap; }
+
+  .footer-top { grid-template-columns: 1.8fr 1fr 1fr 1fr; }
+  .footer-bottom { flex-direction: row; align-items: center; }
+
+  @media (max-width: 1023px) {
+    .container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    section { padding: 72px 0; }
+
+    nav {
+      padding-left: 16px;
+      padding-right: 16px;
+      height: auto;
+      min-height: 64px;
+    }
+
+    .nav-links {
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .hero {
+      padding: 48px 0 56px;
+    }
+
+    .app-card-wrap {
+      max-width: 420px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid { grid-template-columns: 1fr; }
+    .how-cards { grid-template-columns: 1fr; }
+    .security-grid { grid-template-columns: 1fr; }
+
+    .cta-btns { flex-wrap: wrap; }
+
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; }
+
+    .nav-toggle { display: inline-flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 0.5px solid var(--border);
+      padding: 12px 16px 16px;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    nav.nav-open .nav-links { display: flex; }
+  }
+
+  @media (min-width: 640px) {
+    .container { padding-left: 20px; padding-right: 20px; }
+    nav { padding-left: 20px; padding-right: 20px; }
+    section { padding: 84px 0; }
+    .hero { padding: 56px 0 56px; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-bottom { flex-direction: row; align-items: center; }
+  }
+
+  @media (min-width: 768px) {
+    .features-grid { grid-template-columns: repeat(3, 1fr); }
+    .how-cards { grid-template-columns: repeat(2, 1fr); }
+    .security-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1.8fr 1fr; }
+  }
+
+  @media (min-width: 1024px) {
+    .container { padding-left: 40px; padding-right: 40px; }
+    nav { padding-left: 40px; padding-right: 40px; height: 64px; }
+    section { padding: 50px 0; }
+    .hero-content { grid-template-columns: 1fr 420px; gap: 60px; }
+    .features-grid { grid-template-columns: repeat(4, 1fr); }
+    .how-cards { grid-template-columns: repeat(3, 1fr); }
+    .security-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-top { grid-template-columns: 1.8fr 1fr 1fr 1fr; }
+  }
+
+  .scroll-top {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: var(--green);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 14px 34px rgba(0,0,0,0.18);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 200;
+  }
+
+  .scroll-top svg { width: 18px; height: 18px; }
+
+  .scroll-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    animation: scrollTopFloat 2.2s ease-in-out infinite;
+  }
+
+  .scroll-top:hover {
+    transform: translateY(-2px);
+  }
+
+  .scroll-top:focus-visible {
+    outline: 3px solid rgba(212,160,23,0.55);
+    outline-offset: 3px;
+  }
+
+  @keyframes scrollTopFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-top.is-visible { animation: none; }
+  }
+</style>
+</head>
+<body id="top">
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <div class="nav-logo-mark"><img src="./images/Logo.png" alt="logo"></div>
+    <span class="nav-logo-text">SikaDaily</span>
+  </a>
+  <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16" />
+      <path d="M4 12h16" />
+      <path d="M4 18h16" />
+    </svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#top">Home</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#security">Trust</a></li>
+    <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+  </ul>
+  
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        <span>Smart Finance App</span>
+      </div>
+      <h1 class="hero-headline">
+        Grow your wealth,<br/>
+        access credit,<br/>
+        <span class="gold">every single day.</span>
+      </h1>
+      <p class="hero-sub">SikaDaily turns your everyday savings into a powerful financial engine. Earn high interest, build your credit score, and access instant loans when you need them most.</p>
+      <div class="hero-btns">
+        <a href="about.html#waitlist" class="btn-store">
+          
+          <div class="btn-store-text">
+            <small>DOWNLOAD ON THE</small>
+            <strong><i class="fa-brands fa-apple"></i> App Store</strong>
+          </div>
+        </a>
+        <a href="about.html#waitlist" class="btn-store">
+          
+          <div class="btn-store-text">
+            <small>GET IT ON</small>
+            <strong><i class="fa-brands fa-google-play"></i> Google Play</strong>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="app-card-wrap">
+      <div class="app-card">
+        <div class="card-header">
+          <div class="card-header-top">
+            <span class="card-label">Total Balance</span>
+            <span class="card-badge">+12.5%</span>
+          </div>
+          <div class="card-balance-currency">GHS</div>
+          <div class="card-balance-amount">12,450.00</div>
+          <div class="card-change">↑ GHS 145.00 this month</div>
+          <div class="card-vault">
+            <svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="1.2">
+              <rect x="1" y="4" width="8" height="5" rx="1"/>
+              <path d="M3 4V3a2 2 0 018 0v1"/>
+            </svg>
+            <span>Flex Vault (Available Anytime)</span>
+          </div>
+        </div>
+
+        <div class="card-chart">
+          <div class="card-chart-label">
+            <span>Interest Earned</span>
+            <span>This Month</span>
+          </div>
+          <svg class="chart-area" viewBox="0 0 360 70" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1A6B3C" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#1A6B3C" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 60 C40 55, 60 48, 90 42 C120 36, 140 44, 170 38 C200 32, 220 20, 250 18 C280 16, 310 24, 360 10 L360 70 L0 70Z" fill="url(#chartGrad)"/>
+            <path d="M0 60 C40 55, 60 48, 90 42 C120 36, 140 44, 170 38 C200 32, 220 20, 250 18 C280 16, 310 24, 360 10" fill="none" stroke="#1A6B3C" stroke-width="2"/>
+          </svg>
+        </div>
+
+        <div class="card-stats">
+          <div class="card-stat">
+            <div class="card-stat-label">Credit Score</div>
+            <div class="card-stat-value">750</div>
+            <div class="card-stat-sub">↑ Excellent</div>
+          </div>
+          <div class="card-stat">
+            <div class="card-stat-label">Loan Eligibility</div>
+            <div class="card-stat-value">GH₵ 5,000</div>
+            <div class="card-stat-sub">Available now</div>
+          </div>
+        </div>
+
+        <div class="card-action">
+          <a class="card-action-btn" href="about.html#waitlist">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="7" cy="7" r="6" stroke="#1C1C1E" stroke-width="1.2"/>
+              <path d="M7 4v3l2 1.5" stroke="#1C1C1E" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            + Make a Deposit
+          </a>
+        </div>
+
+        <div class="card-nav">
+          <div class="card-nav-item">
+            <div class="card-nav-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round">
+                <rect x="2" y="5" width="12" height="8" rx="1.5"/>
+                <path d="M5 5V4a3 3 0 018 0v1"/>
+              </svg>
+            </div>
+            <span class="card-nav-label">Deposit</span>
+          </div>
+          <div class="card-nav-item">
+            <div class="card-nav-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round">
+                <rect x="2" y="3" width="12" height="8" rx="1.2"/>
+                <path d="M5.5 12h5M8 11v2"/>
+              </svg>
+            </div>
+            <span class="card-nav-label">Withdraw</span>
+          </div>
+          <div class="card-nav-item">
+            <div class="card-nav-icon active">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#D4A017" stroke-width="1.2" stroke-linecap="round">
+                <rect x="2" y="4" width="12" height="8" rx="1.5"/>
+                <path d="M5 8h6"/>
+              </svg>
+            </div>
+            <span class="card-nav-label active">My Loan</span>
+          </div>
+          <div class="card-nav-item">
+            <div class="card-nav-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2" stroke-linecap="round">
+                <circle cx="8" cy="8" r="6"/>
+                <path d="M8 5v3l2 1.5"/>
+              </svg>
+            </div>
+            <span class="card-nav-label">History</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="features-header">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        <span>What We Offer</span>
+      </div>
+      <h2 class="section-heading">Everything you need to grow</h2>
+      <p class="section-sub">A complete financial toolkit designed to help you save effortlessly, earn passively, and borrow smartly.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="9"/>
+            <path d="M11 7v4l2.5 2.5"/>
+          </svg>
+        </div>
+        <div class="feature-title">Daily Savings</div>
+        <p class="feature-desc">Deposit any amount anytime via MoMo. Build a consistent habit that compounds into real wealth.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <path d="M3 16 C6 12, 9 14, 12 10 C15 6, 18 8, 21 4"/>
+            <path d="M17 4h4v4"/>
+          </svg>
+        </div>
+        <div class="feature-title">Earn Interest</div>
+        <p class="feature-desc">Watch your money grow with highly competitive daily compound interest rates credited to your balance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <rect x="3" y="6" width="16" height="11" rx="2"/>
+            <path d="M8 6V5a5 5 0 0110 0v1"/>
+            <path d="M11 12v3"/>
+            <circle cx="11" cy="11" r="1" fill="white" stroke="none"/>
+          </svg>
+        </div>
+        <div class="feature-title">Access Loans</div>
+        <p class="feature-desc">Unlock instant, low-interest credit lines based on your consistent savings history and repayment record.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round">
+            <circle cx="11" cy="11" r="9"/>
+            <path d="M11 7v4"/>
+            <circle cx="11" cy="15" r="0.5" fill="white"/>
+          </svg>
+        </div>
+        <div class="feature-title">Credit Score</div>
+        <p class="feature-desc">Build your financial identity. Your credit score grows with every save and repayment, opening more doors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    
+    <div class="how-header">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        <span class="hero-pill-text">How It Works</span>
+      </div>
+      <h2 class="section-heading yellow">Send money in a few simple steps</h2>
+      <p class="section-sub yellow">
+        Our platform makes sending money quick, secure, and affordable.
+      </p>
+    </div>
+
+    <div class="how-cards">
+
+      <!-- STEP 1 -->
+      <div class="how-card">
+        <div class="how-badge">1</div>
+
+        <div class="how-icon">
+          <i class="fa-solid fa-download"></i>
+        </div>
+
+        <h3>Download the app</h3>
+        <p>
+          Get started by downloading our app — fast, secure and easy to use on all devices.
+        </p>
+
+        <div class="how-buttons">
+          <a href="about.html#waitlist" class="store-btn dark">
+            <i class="fa-brands fa-apple"></i> App Store
+          </a>
+          <a href="about.html#waitlist" class="store-btn">
+            <i class="fa-brands fa-google-play"></i> Google Play
+          </a>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="how-card">
+        <div class="how-badge">2</div>
+
+        <div class="how-icon">
+          <i class="fa-solid fa-gear"></i>
+        </div>
+
+        <h3>Setup your account</h3>
+        <p>
+          Create your account in a few simple steps and verify your identity quickly.
+        </p>
+
+        <a class="how-action" href="about.html#waitlist">Create Account</a>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="how-card">
+        <div class="how-badge">3</div>
+
+        <div class="how-icon">
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
+
+        <h3>Start Financial Growth</h3>
+        <p>
+          Save money instantly and build a credit score.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- SECURITY -->
+<section class="security" id="security">
+  <div class="container">
+    <div class="security-header">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        <span>Protection</span>
+      </div>
+      <h2 class="section-heading">Bank-grade security</h2>
+      <p class="section-sub">Your funds and data are protected by industry-leading security protocols and regulatory oversight — so you can save with complete peace of mind.</p>
+    </div>
+    <div class="security-grid">
+      <div class="security-card">
+        <div class="security-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 2L4 5.5v5c0 4.5 3 8.5 7 9.5 4-1 7-5 7-9.5v-5L11 2z"/>
+          </svg>
+        </div>
+        <div class="security-card-title">Bank of Ghana Compliant</div>
+        <p class="security-card-desc">Fully licensed and regulated operations under the Bank of Ghana framework, ensuring your complete peace of mind.</p>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="7" width="16" height="12" rx="2"/>
+            <path d="M7 7V5a4 4 0 018 0v2"/>
+            <circle cx="11" cy="13" r="1.5" fill="white" stroke="none"/>
+          </svg>
+        </div>
+        <div class="security-card-title">Funds Held Securely</div>
+        <p class="security-card-desc">Customer deposits are safely held with licensed partner commercial banks — never stored in our own wallets.</p>
+      </div>
+      <div class="security-card">
+        <div class="security-icon">
+          <svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="6" width="18" height="13" rx="2"/>
+            <path d="M6 6V5a5 5 0 0110 0v1"/>
+            <path d="M11 12v3"/>
+            <circle cx="11" cy="11" r="1" fill="white" stroke="none"/>
+          </svg>
+        </div>
+        <div class="security-card-title">256-bit Encryption</div>
+        <p class="security-card-desc">Military-grade encryption protects every transaction and piece of personal data across the SikaDaily platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-pill">START TODAY</div>
+    <h2 class="cta-heading">Ready to take control of your financial future?</h2>
+    <p class="cta-sub">Join thousands of users building wealth daily. Download the app and set up your first auto-save in minutes.</p>
+    <div class="cta-btns">
+      <a href="about.html#waitlist" class="btn-store">
+        
+        <div class="btn-store-text">
+          <small>DOWNLOAD ON THE</small>
+          <strong><i class="fa-brands fa-apple"></i> App Store</strong>
+        </div>
+      </a>
+      <a href="about.html#waitlist" class="btn-store">
+        <div class="btn-store-text">
+          <small>GET IT ON</small>
+          <strong><i class="fa-brands fa-google-play"></i> Google Play</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">
+              <div class="nav-logo-mark"><img src="./images/Logo.png" alt="logo"></div>
+
+          SikaDaily
+        </div>
+        <p class="footer-brand-desc">Save daily. Earn interest. Build your future — one cedi at a time.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Product</div>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Download</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">Founders</a></li>
+          <li><a href="about.html">Board</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#security">Trust &amp; Security</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2025 SikaDaily. All rights reserved.</span>
+      <div class="footer-reg">
+        <div class="footer-reg-dot"></div>
+        Regulated under Bank of Ghana guidelines
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTopBtn" class="scroll-top" type="button" aria-label="Scroll to top" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <path d="M12 19V5" />
+    <path d="M6 11l6-6 6 6" />
+  </svg>
+</button>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.feature-card, .testimonial-card, .security-card').forEach(el => {
+    observer.observe(el);
+  });
+
+  const nav = document.querySelector('nav');
+  const navToggle = document.querySelector('.nav-toggle');
+
+  if (nav && navToggle) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    nav.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (nav.classList.contains('nav-open')) {
+          nav.classList.remove('nav-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.setAttribute('aria-label', 'Open menu');
+        }
+      });
+    });
+  }
+
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+  if (scrollTopBtn) {
+    const setScrollTopVisibility = () => {
+      const shouldShow = window.scrollY > 300;
+      scrollTopBtn.classList.toggle('is-visible', shouldShow);
+      scrollTopBtn.setAttribute('aria-hidden', String(!shouldShow));
+    };
+
+    setScrollTopVisibility();
+    window.addEventListener('scroll', setScrollTopVisibility, { passive: true });
+
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    scrollTopBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+</script>
+</body>
+</html>
