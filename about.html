@@ -1815,13 +1815,7 @@
 
       <div style="height: 18px"></div>
 
-      <div class="waitlist-side" aria-label="Social proof">
-        <div class="waitlist-side-inner">
-          <div class="waitlist-proof"><b>1,200+</b> people already joined for early access</div>
-          <div class="waitlist-meter" role="progressbar" aria-label="Early access spots" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62"><span></span></div>
-          <div class="waitlist-meter-note">Limited early access slots — join before we close the list.</div>
-        </div>
-      </div>
+      
     </div>
   </section>
 
@@ -1996,6 +1990,42 @@
         el.setAttribute('disabled', 'disabled');
       });
       if (submit) submit.setAttribute('disabled', 'disabled');
+    });
+  }
+
+  const contactForm = document.getElementById('contactForm');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameEl = contactForm.querySelector('#contactName');
+      const topicEl = contactForm.querySelector('#contactTopic');
+      const reasonEl = contactForm.querySelector('#contactReason');
+
+      const name = nameEl && nameEl.value ? nameEl.value.trim() : '';
+      const topic = topicEl && topicEl.value ? topicEl.value.trim() : '';
+      const reason = reasonEl && reasonEl.value ? reasonEl.value.trim() : '';
+
+      const subjectParts = ['SikaDaily Contact Form'];
+      if (topic) subjectParts.push(`— ${topic}`);
+      if (name) subjectParts.push(`(${name})`);
+      const subject = subjectParts.join(' ');
+
+      const lines = [
+        'New message from SikaDaily website contact form:',
+        '',
+        `Name: ${name || '-'}`,
+        `Topic: ${topic || '-'}`,
+        '',
+        'Message:',
+        reason || '-',
+        '',
+        `Page: ${window.location.href}`
+      ];
+
+      const mailto = `mailto:Sikadailyteam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+      window.location.assign(mailto);
     });
   }
 
